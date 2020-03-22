@@ -1,0 +1,30 @@
+{
+    "name": "hmxingkong/think-multi-app",
+    "description": "ThinkPHP 6.* 多应用功能支持",
+    "type": "library",
+    "require": {
+        "php": ">=7.1.0",
+        "topthink/framework": "^6.0.0",
+        "hmxingkong/hmutil": "^0.5.1"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "hmxingkong",
+            "email": "hmxingkong@126.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "think\\app\\": "src"
+        }
+    },
+    "extra": {
+        "think":{
+            "services":[
+                "think\\app\\Service"
+            ]
+        }
+    }
+}
