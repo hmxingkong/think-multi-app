@@ -106,10 +106,6 @@ class MultiApp
         $scriptName = $this->getScriptName();
         $defaultApp = $this->app->config->get('app.default_app') ?: 'index';
 
-        if(!$this->name){
-            $this->name = $this->parseNameByRouteCnf();
-        }
-
         if ($this->name || ($scriptName && !in_array($scriptName, ['index', 'router', 'think']))) {
             $appName = $this->name ?: $scriptName;
             $this->app->http->setBind();
@@ -164,6 +160,20 @@ class MultiApp
                     $appPath = $this->path ?: $this->app->getBasePath() . $appName . DIRECTORY_SEPARATOR;
 
                     if (!is_dir($appPath)) {
+
+                        if($appNameF = $this->parseNameByRouteCnf()){
+                            $this->setApp($appNameF);
+                            return true;
+                        }
+                        else{
+                            $appNameM = 'miss';
+                            $appPath = $this->app->getBasePath() . $appNameM . DIRECTORY_SEPARATOR;
+                            if(is_dir($appPath)){
+                                $this->setApp($appNameM);
+                                return true;
+                            }
+                        }
+
                         $express = $this->app->config->get('app.app_express', false);
                         if ($express) {
                             $this->setApp($defaultApp);

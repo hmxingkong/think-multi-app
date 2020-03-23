@@ -23,6 +23,9 @@ composer require hmxingkong/think-multi-app
 composer update hmxingkong/think-multi-app
 ~~~
 
+v1.1.0 更新内容
+ + 优化多应用识别策略，兼容 app/miss 应用，appName 确认优先级： 手工指定（URL/入口文件） > 配置指定（app.domain_bind/app.app_map） > 动态识别 > 默认Miss应用（app/miss） > 默认应用（app.default_app）
+
 v1.0.0 更新内容
  + 初始版本，基于 topthink/think-multi-app: 1.0.12 进行优化，支持通过路由文件解析 appName，支持加载 RootPath/AppName/route、RootPath/route/AppName、RootPath/route 三个位置的路由配置加载，优先级 RootPath/AppName/route > RootPath/route/AppName > RootPath/route
   
